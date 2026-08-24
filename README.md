@@ -7,6 +7,7 @@
 | Matrícula | Aluno |
 |---|---|
 | 251023282 | Josef Wojtyla Barros de Souza |
+| 251020226 | Eduardo de Sousa Brito |
 ---
 ## Sobre
 
