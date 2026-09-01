@@ -1,5 +1,9 @@
 % rebase('base.tpl', titulo_pagina='Fluxograma', css_extra='<link rel="stylesheet" href="/css/fluxo.css">')
 
+
+% if defined('erro'):
+    <p style="color: red;">{{erro}}</p>
+% end
 <div class="fluxograma">
     <h1>Visualizar Fluxograma</h1>
 

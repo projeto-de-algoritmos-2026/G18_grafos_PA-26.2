@@ -36,9 +36,13 @@ def adicionar_materia():
     form_requisitos = request.forms.getall('requisitos')
     lista_requisitos = [req.encode('iso-8859-1').decode('utf8').strip() for req in form_requisitos if req.strip() != '']
 
+    for mat in lista_requisitos:
+        if mat not in Algoritmo.grafo:
+            return template('fluxograma.tpl', grafo = Algoritmo.grafo, horas = Algoritmo.horas_materia, erro = 'Esta matéria de pré-requisito não foi adicionada antes. Adicione esta matéria na lista primeiramente')
+
     Algoritmo.adicionar_vertice(form_materia,form_horas)
     for req in lista_requisitos:
-        Algoritmo.adicionar_aresta(req,form_materia)
+        Algoritmo.adicionar_aresta(req,form_materia, form_horas)
     print(Algoritmo.grafo)
 
     redirect('/')
