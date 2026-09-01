@@ -6,16 +6,16 @@ class GrafoListaAdjacencia():
         self.grafo = {}
         self.horas_materia = {}
 
-    def adicionar_vertice(self, materia, horas = 0):
+    def adicionar_vertice(self, materia, horas):
         # se ainda nao existe no dicionario do grafo
         if materia not in self.grafo:
             self.grafo[materia] = []
             self.horas_materia[materia] = horas
 
-    def adicionar_aresta(self, origem, destino):
+    def adicionar_aresta(self, origem, destino, horas):
         # garantir que as duas matérias existam no dicionario do grafo
-        self.adicionar_vertice(origem)
-        self.adicionar_vertice(destino)
+        self.adicionar_vertice(origem, horas)
+        self.adicionar_vertice(destino, horas)
 
         # criando a direção do grafo
         if destino not in self.grafo[origem]:
@@ -46,7 +46,7 @@ class GrafoListaAdjacencia():
             materias_semestre = []
             proximos_disponiveis = []
 
-
+            # vai pegando as materias disponiveis para serem cursadas e vai calculando as horas
             for materia in disponiveis:
                 horas = self.horas_materia[materia]
 
