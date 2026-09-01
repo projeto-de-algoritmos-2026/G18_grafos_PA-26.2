@@ -1,0 +1,195 @@
+/*
+=========================================
+   Reset Básico e Tipografia
+=========================================
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+/*
+=========================================
+   Containers Principais (Cards)
+=========================================
+*/
+.fluxograma, .config, .lista-materias {
+    background-color: #ffffff;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/*
+=========================================
+   Formulário de Configuração (.config)
+=========================================
+*/
+.config form > div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #34495e;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccd1d1;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+}
+
+/*
+=========================================
+   Botões
+=========================================
+*/
+button {
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Botão Principal (Adicionar Matéria) */
+button[type="submit"] {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #27ae60;
+}
+
+/* Botão Secundário (Adicionar outro pré-requisito) */
+button[type="button"] {
+    background-color: transparent;
+    color: #3498db;
+    border: 1px solid #3498db;
+    padding: 6px 12px;
+}
+
+button[type="button"]:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Botão de Excluir */
+.lista-materias button[type="submit"] {
+    background-color: #e74c3c;
+    width: auto;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+.lista-materias button[type="submit"]:hover {
+    background-color: #c0392b;
+}
+
+/*
+=========================================
+   Lista de Matérias (.materia-info)
+=========================================
+*/
+.materia-info {
+    background-color: #f8f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ecf0f1;
+    border-radius: 4px;
+}
+
+.materia-info p {
+    margin-bottom: 8px;
+}
+
+.materia-info p:first-child {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.materia-info span {
+    font-weight: bold;
+    color: #7f8c8d;
+}
+
+/*
+=========================================
+   Layout Flexbox para a seção Materias
+=========================================
+*/
+.materias {
+    display: flex;
+    gap: 25px; /* Cria um espaço de respiro entre as duas colunas */
+    align-items: flex-start; /* Evita que uma caixa estique caso a outra cresça muito */
+}
+
+/* Ajustando os filhos para dividirem o espaço */
+.materias .config,
+.materias .lista-materias {
+    flex: 1; /* Cada caixa vai ocupar exatamente 50% do espaço */
+    margin-bottom: 0; /* Remove a margem inferior que tínhamos no código antigo */
+}
+
+/*
+=========================================
+   Responsividade (Telas Menores)
+=========================================
+*/
+@media (max-width: 768px) {
+    .materias {
+        flex-direction: column; /* Volta a empilhar um em cima do outro */
+    }
+
+    .materias .config,
+    .materias .lista-materias {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
