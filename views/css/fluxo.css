@@ -3,6 +3,7 @@
    Reset Básico e Tipografia
 =========================================
 */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -192,4 +193,50 @@ button[type="button"]:hover {
         width: 100%;
         margin-bottom: 30px;
     }
+}
+
+/* =========================================
+   Fluxograma / Semestres
+========================================= */
+.fluxograma {
+
+}
+
+.fluxograma h1 {
+
+}
+
+.resultado-fluxo {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.fl-semestre {
+    border-radius: 6px;
+    padding: 15px;
+    max-width: 150px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fl-semestre h3 {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.fl-materia {
+    background-color: #f8f9f9;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    overflow: hidden;
 }

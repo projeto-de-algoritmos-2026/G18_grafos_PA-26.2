@@ -8,7 +8,18 @@
     <h1>Visualizar Fluxograma</h1>
 
     <div class="resultado-fluxo">
-        um quadrado gigantesco com o fluxograma aqui 😨
+
+        % for i, semestre in enumerate(res_fluxo):
+        <div class="fl-semestre">
+            <h3>{{i+1}} Semestre</h3>
+            % for materia in semestre:
+            <div class="fl-materia">
+                <p>{{materia}}</p>
+            </div>
+            % end
+        </div>
+        % end
+
     </div>
 
     <form action="/fluxograma" method="POST">
