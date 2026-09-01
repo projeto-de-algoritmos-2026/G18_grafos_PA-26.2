@@ -1,10 +1,24 @@
-% rebase('base.tpl', titulo_pagina='Fluxograma', css_extra='<link rel="stylesheet" href="/static/css/grafo.css">')
+% rebase('base.tpl', titulo_pagina='Fluxograma', css_extra='<link rel="stylesheet" href="/css/fluxo.css">')
 
 <div class="fluxograma">
     <h1>Visualizar Fluxograma</h1>
+
+    <div class="resultado-fluxo">
+        um quadrado gigantesco com o fluxograma aqui 😨
+    </div>
+
+    <form action="/fluxograma" method="POST">
+        <div>
+            <label for="lim_horas">Limite de Horas por semestre</label>
+            <input type="number" id="lim_horas" name="lim_horas" min="1" required>
+        </div>
+        <button type="submit">Calcular Fluxograma</button>
+    </form>
 </div>
 
-<div class="config">
+<div class="materias">
+
+    <div class="config">
     <h1>Configurar Matérias</h1>
 
     <form action="/add" method="POST">
@@ -50,6 +64,9 @@
                 <button type="submit">Excluir matéria</button>
             </form>
         </div>
+    % end
+</div>
+
 </div>
 
 <script>
