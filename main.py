@@ -18,7 +18,6 @@ banco.salvar(graph)
 Algoritmo = GrafoListaAdjacencia()
 
 
-
 # --- ROTAS BOTTLE --- #
 @app.route('/css/<filepath:path>')
 def server_css(filepath):
@@ -27,7 +26,7 @@ def server_css(filepath):
 
 @app.route('/')
 def fluxo():
-    return template('fluxograma.tpl',grafo=Algoritmo.grafo,horas=Algoritmo.horas_materia)
+    return template('fluxograma.tpl',grafo=Algoritmo.grafo,horas=Algoritmo.horas_materia,res_fluxo=[])
 
 @app.route('/add', method='POST')
 def adicionar_materia():
@@ -52,7 +51,8 @@ def remover_materia():
 @app.route('/fluxograma',method='POST')
 def calcular_fluxo():
     form_limite_horas = int(request.forms.get('lim_horas'))
-    print(Algoritmo.ordenacao_topologica(360))
+    res_alg = Algoritmo.ordenacao_topologica(form_limite_horas)
+    return template('fluxograma.tpl',grafo=Algoritmo.grafo,horas=Algoritmo.horas_materia,res_fluxo=res_alg)
 
 if __name__ == '__main__':
     run(app, host='localhost', port=8080, debug=True, reloader=True)
