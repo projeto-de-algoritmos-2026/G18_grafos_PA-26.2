@@ -20,10 +20,10 @@ Algoritmo = GrafoListaAdjacencia()
 
 
 # --- ROTAS BOTTLE --- #
-@app.route('/static/<filepath:path>')
-def server_static(filepath):
-    static_path = os.path.join(base_path, 'views', 'static')
-    return static_file(filepath, root=static_path)
+@app.route('/css/<filepath:path>')
+def server_css(filepath):
+    css_path = os.path.join(base_path, 'views','css')
+    return static_file(filepath, root=css_path)
 
 @app.route('/')
 def fluxo():
@@ -48,6 +48,11 @@ def remover_materia():
     materia = request.forms.getunicode('materia_alvo')
     print(Algoritmo.grafo)
     redirect('/')
+
+@app.route('/fluxograma',method='POST')
+def calcular_fluxo():
+    form_limite_horas = int(request.forms.get('lim_horas'))
+    print(Algoritmo.ordenacao_topologica(360))
 
 if __name__ == '__main__':
     run(app, host='localhost', port=8080, debug=True, reloader=True)
