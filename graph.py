@@ -21,6 +21,16 @@ class GrafoListaAdjacencia():
         if destino not in self.grafo[origem]:
             self.grafo[origem].append(destino)
 
+    def remover_aresta(self,materia):
+        if materia in self.grafo:
+            if materia in self.horas_materia:
+                del self.horas_materia[materia]
+            for vertice in self.grafo:
+                self.grafo[vertice] = [
+                    req for req in self.grafo[vertice] if req != materia
+                ]
+            del self.grafo[materia]
+
     def exibir(self):
         for materia, vizinhos in self.grafo.items():
             print(f"matéria: {materia} libera -> {vizinhos}")

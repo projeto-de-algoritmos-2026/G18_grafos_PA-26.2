@@ -48,7 +48,8 @@ def adicionar_materia():
 
 @app.route('/exclude', method='POST')
 def remover_materia():
-    materia = request.forms.getunicode('materia_alvo')
+    materia = request.forms.get('materia_alvo').encode('iso-8859-1').decode('utf8').strip().upper()
+    Algoritmo.remover_aresta(materia)
     print(Algoritmo.grafo)
     redirect('/')
 
