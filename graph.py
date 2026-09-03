@@ -76,6 +76,6 @@ class GrafoListaAdjacencia():
             disponiveis = proximos_disponiveis
 
         if sum(grau_entrada.values()) > 0:
-            return "Erro: o fluxograma possui um ciclo de dependencia."
+            return False # Erro: o fluxograma possui um ciclo de dependencia.
 
         return semestre

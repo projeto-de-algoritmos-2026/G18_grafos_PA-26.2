@@ -57,6 +57,8 @@ def remover_materia():
 def calcular_fluxo():
     form_limite_horas = int(request.forms.get('lim_horas'))
     res_alg = Algoritmo.ordenacao_topologica(form_limite_horas)
+    if res_alg == False:
+        return template('fluxograma.tpl', grafo=Algoritmo.grafo, horas=Algoritmo.horas_materia, res_fluxo=[],erro="Erro: o fluxograma possui um ciclo de dependencia.")
     return template('fluxograma.tpl',grafo=Algoritmo.grafo,horas=Algoritmo.horas_materia,res_fluxo=res_alg)
 
 if __name__ == '__main__':
