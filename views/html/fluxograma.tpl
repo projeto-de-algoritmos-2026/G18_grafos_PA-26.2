@@ -9,6 +9,7 @@
 
     <div class="resultado-fluxo">
 
+        % if defined('res_fluxo'):
         % for i, semestre in enumerate(res_fluxo):
         <div class="fl-semestre">
             <h3>{{i+1}} Semestre</h3>
@@ -18,6 +19,7 @@
             </div>
             % end
         </div>
+        % end
         % end
 
     </div>
