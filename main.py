@@ -9,12 +9,6 @@ base_path = os.path.dirname(os.path.abspath(__file__))
 html_path = os.path.join(base_path, 'views', 'html')
 TEMPLATE_PATH.insert(0,html_path)
 
-banco = GerenciadorPersistencia()
-''' ARRUMAR PATH DE SALVAMENTO
-graph = banco.carregar()
-banco.salvar(graph)
-'''
-
 Algoritmo = GrafoListaAdjacencia()
 
 
@@ -39,9 +33,13 @@ def adicionar_materia():
         if mat not in Algoritmo.grafo:
             return template('fluxograma.tpl', grafo = Algoritmo.grafo, horas = Algoritmo.horas_materia, erro = 'Esta matéria de pré-requisito não foi adicionada antes. Adicione esta matéria na lista primeiramente')
 
+    if form_materia in Algoritmo.grafo:
+        return template('fluxograma.tpl', grafo = Algoritmo.grafo, horas = Algoritmo.horas_materia, erro = 'Esta matéria de já foi adicionada. Adicione outra matéria.')
+
+
     Algoritmo.adicionar_vertice(form_materia,form_horas)
     for req in lista_requisitos:
-        Algoritmo.adicionar_aresta(req,form_materia, form_horas)
+        Algoritmo.adicionar_aresta(req,form_materia)
     print(Algoritmo.grafo)
 
     redirect('/')

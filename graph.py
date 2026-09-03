@@ -12,11 +12,7 @@ class GrafoListaAdjacencia():
             self.grafo[materia] = []
             self.horas_materia[materia] = horas
 
-    def adicionar_aresta(self, origem, destino, horas):
-        # garantir que as duas matérias existam no dicionario do grafo
-        self.adicionar_vertice(origem, horas)
-        self.adicionar_vertice(destino, horas)
-
+    def adicionar_aresta(self, origem, destino):
         # criando a direção do grafo
         if destino not in self.grafo[origem]:
             self.grafo[origem].append(destino)
